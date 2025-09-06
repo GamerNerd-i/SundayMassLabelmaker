@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sunday Mass Labelmaker</title>
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1" />
+</head>
+<body>
+    <h1>Sunday Mass Labelmaker</h1>
+    <label
+        >Start date:
+        <input
+            id="start"
+            type="date"
+            value="2026-05-10" /></label
+    ><br />
+    <label
+        >End date:
+        <input
+            id="end"
+            type="date"
+            value="2027-05-10" /></label
+    ><br />
+    <label
+        >Times (one per line):<br />
+        <textarea
+            id="times"
+            rows="3">
+10 AM
+8 PM</textarea
+        ></label
+    ><br />
+    <button id="generate">Generate CSV</button>
+
+    <script src="main.js"></script>
+</body>
