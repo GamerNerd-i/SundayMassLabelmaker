@@ -1,37 +1,83 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8" />
-    <title>Sunday Mass Labelmaker</title>
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1" />
-</head>
-<body>
-    <h1>Sunday Mass Labelmaker</h1>
-    <label
-        >Start date:
-        <input
-            id="start"
-            type="date"
-            value="2026-05-10" /></label
-    ><br />
-    <label
-        >End date:
-        <input
-            id="end"
-            type="date"
-            value="2027-05-10" /></label
-    ><br />
-    <label
-        >Times (one per line):<br />
-        <textarea
-            id="times"
-            rows="3">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sunday Mass Labelmaker</title>
+        <script
+            src="main.js"
+            async></script>
+    </head>
+    <body>
+        <h1>Sunday Mass Labelmaker</h1>
+
+        <label
+            >Start date:
+            <input
+                id="start"
+                type="date"
+                value=""
+                required /></label
+        ><br />
+        <label
+            >End date:
+            <input
+                id="end"
+                type="date"
+                value=""
+                required /></label
+        ><br />
+
+        <label
+            >Times (one per line):<br />
+            <textarea
+                id="times"
+                rows="3">
 10 AM
 8 PM</textarea
-        ></label
-    ><br />
-    <button id="generate">Generate CSV</button>
+            ></label
+        ><br />
 
-    <script src="main.js"></script>
-</body>
+        <button id="generate">Create and Download CSV</button>
+
+        <h2>Using the CSV File:</h2>
+        <ol>
+            <li>
+                First, download
+                <a
+                    href="https://lmu.box.com/s/fe8yz0y3qvthah6fg8momohaw37dznv6">
+                    this Excel Template</a
+                >
+                from Box, which I made during my time as Coordinator.
+            </li>
+            <li>Open Microsoft Excel.</li>
+            <li>?????</li>
+            <li>
+                Find the downloaded CSV file and open it. A freshly downloaded
+                CSV file will be named
+                <i>sundays_YYYY-MM-DD_through_YYYY-MM-DD.csv</i>, containing the
+                selected start and end dates.
+            </li>
+            <li>
+                Ensure that the following print settings are active. If
+                everything has gone right so far, you should have 4 columns and
+                ????? rows of labels on one page.
+            </li>
+        </ol>
+    </body>
+
+    <script>
+        function toInputDate(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, "0");
+            const d = String(date.getDate()).padStart(2, "0");
+            return `${y}-${m}-${d}`;
+        }
+
+        const today = new Date(Date.now());
+        const nextYear = new Date(today);
+        nextYear.setFullYear(today.getFullYear() + 1);
+
+        document.getElementById("start").value = toInputDate(today);
+        document.getElementById("end").value = toInputDate(nextYear);
+    </script>
+</html>

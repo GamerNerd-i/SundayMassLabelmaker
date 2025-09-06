@@ -11,14 +11,13 @@ function fmtMMDDYY(date) {
     );
 }
 
-function getSundays(start, end) {
-    // start/end are Date objects (midnight)
+function getSundays(startDate, endDate) {
     const sundays = [];
-    const day = start.getDay(); // 0 = Sunday
+    const day = startDate.getDay(); // 0 = Sunday
     const daysUntilSunday = day === 0 ? 0 : 7 - day;
-    let current = new Date(start);
+    let current = new Date(startDate);
     current.setDate(current.getDate() + daysUntilSunday);
-    while (current <= end) {
+    while (current <= endDate) {
         sundays.push(new Date(current));
         current.setDate(current.getDate() + 7);
     }
@@ -36,11 +35,23 @@ function csvEscape(cell) {
     return '"' + String(cell).replace(/"/g, '""') + '"';
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date(Date.now());
+    const nextYear = new Date(today);
+    nextYear.setFullYear(today.getFullYear() + 1);
+
+    document.getElementById("start").value = today.toISOString();
+    document.getAnimations("end").value = nextYear.toISOString();
+});
+
 document.getElementById("generate").addEventListener("click", () => {
     const startVal = document.getElementById("start").value;
     const endVal = document.getElementById("end").value;
     if (!startVal || !endVal) {
-        alert("Pick start and end dates");
+        alert("Please pick both a start and an end date.");
+        return;
+    } else if (startVal >= endVal) {
+        alert("Please ensure that the start date comes after the end date.");
         return;
     }
     const start = new Date(startVal + "T00:00:00");
@@ -51,6 +62,11 @@ document.getElementById("generate").addEventListener("click", () => {
         .map((s) => s.trim())
         .filter(Boolean);
     const sundays = getSundays(start, end).map((d) => fmtMMDDYY(d));
+
+    if (sundays.length === 0) {
+        alert("There are no Sundays within this length of dates.");
+        return;
+    }
 
     const masses = [];
     sundays.forEach((d) => {
