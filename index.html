@@ -39,30 +39,150 @@
 
         <button id="generate">Create and Download CSV</button>
 
-        <h2>Using the CSV File:</h2>
+        <h2>
+            Setting Up the
+            <a href="https://lmu.box.com/s/fe8yz0y3qvthah6fg8momohaw37dznv6">
+                Excel Template</a
+            >:
+        </h2>
         <ol>
             <li>
-                First, download
-                <a
-                    href="https://lmu.box.com/s/fe8yz0y3qvthah6fg8momohaw37dznv6">
-                    this Excel Template</a
-                >
-                from Box, which I made during my time as Coordinator.
-            </li>
-            <li>Open Microsoft Excel.</li>
-            <li>?????</li>
-            <li>
-                Find the downloaded CSV file and open it. A freshly downloaded
-                CSV file will be named
-                <i>sundays_YYYY-MM-DD_through_YYYY-MM-DD.csv</i>, containing the
-                selected start and end dates.
+                Click the link above to download the template from Box, which I
+                made during my time as Coordinator.
             </li>
             <li>
-                Ensure that the following print settings are active. If
-                everything has gone right so far, you should have 4 columns and
-                ????? rows of labels on one page.
+                Note that the file extension is <code>.xltx</code>, as opposed
+                to <code>.xlsx</code>. Open the file in Excel.
+            </li>
+            <li>
+                In your top bar, navigate to
+                <code>File > Save as Template</code>. Save it in the default
+                location; it should be a folder called "Templates."
+            </li>
+            <li>
+                To make sure it saved correctly, navigate to
+                <code>File > New from Template</code>. You should now see
+                "sunday mass labels" as an available template, beneath the
+                "Blank Workbook" option.
+            </li>
+            <li>
+                Double click the template to make a new file with it as a base.
+                You should now be ready to use the file you receive from this
+                website.
             </li>
         </ol>
+        <h2>Making Collection Bag Labels From the CSV File:</h2>
+        <ol>
+            <li>
+                Open Microsoft Excel and create a new file using the template
+                above.
+            </li>
+            <li>
+                Find the downloaded CSV file and double-click it. You should see
+                a table with four columns.
+                <ul>
+                    <li>
+                        A freshly downloaded CSV file will be named
+                        <code>sundays_YYYY-MM-DD_through_YYYY-MM-DD.csv</code>,
+                        containing the selected start and end dates.
+                    </li>
+                    <li>
+                        It might open in an app other than Excel; that's
+                        completely fine,
+                        <b
+                            >as long as it opens as a <i>spreadsheet</i> and NOT
+                            as <i>raw text</i>.</b
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Select all the date and time cells with <code>⌘A</code> on Mac
+                or <code>Ctrl + A</code> on Windows. Then copy them with
+                <code>⌘C</code> on Mac or <code>Ctrl + C</code> on Windows
+            </li>
+            <li>
+                Go back to Microsoft Excel and right-click cell A1. Navigate to
+                <code>Paste Special > Paste Special...</code>.
+            </li>
+            <li>
+                In the settings box, ensure that <b>Source:</b> is set to
+                <b>Paste</b> and <b>As:</b> is set to <b>Text</b>. Then click
+                <b>OK</b>. The date and time values should now be in the
+                template, retaining the text and cell formatting.
+            </li>
+            <li>
+                The size of some cells may be different. To fix this, do one of
+                the following:
+                <ul>
+                    <li>
+                        Rows:
+                        <ol>
+                            <li>
+                                Click the margin for row 1, then use
+                                <code>Ctrl + Shift + ⬇️</code>
+                                to select all rows with data in them.
+                            </li>
+                            <li>
+                                Right-click the margin and select
+                                <code>Row Height</code>.
+                            </li>
+                            <li>
+                                Ensure that the row height is set to
+                                <b>73</b> (at time of writing, no measurements
+                                are given in Excel).
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        Columns:
+                        <ol>
+                            <li>
+                                Click the margin for column A, then use
+                                <code>Ctrl + Shift + ➡️</code>
+                                to select all rows with data in them.
+                            </li>
+                            <li>
+                                Right-click the margin and select
+                                <code>Column Width</code>.
+                            </li>
+                            <li>
+                                Ensure that the column width is set to
+                                <b>23</b> (at time of writing, no measurements
+                                are given in Excel).
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Select all data cells again (<code>⌘A</code> on Mac or
+                <code>Ctrl + A</code> on Windows).
+            </li>
+            <li>
+                If some cells are unformatted, click and drag a row of formatted
+                cells, then hover in the bottom right corner of your selection,
+                where a dot should be visible. Click and drag that dot downward
+                to cover as many cells as needed and copy the formatting that
+                far. Then return to <b>Step 3</b>.
+            </li>
+            <li>
+                Ensure that the following print settings are set. If done
+                correctly, each page should have 4 columns and 9 rows.
+                <ul>
+                    <li><b>Margins:</b> Narrow</li>
+                    <li><b>Orientation:</b> Portrait</li>
+                    <li><b>Scale to Fit:</b> Off</li>
+                </ul>
+            </li>
+            <li>
+                Remember to check the pages you're printing. You may end up with
+                some that are entirely blank. If you don't want them, uncheck
+                them.
+            </li>
+        </ol>
+        If everything looks good, print! You're done! (With Excel, anyway. You
+        probably need to cut those things.)
     </body>
 
     <script>

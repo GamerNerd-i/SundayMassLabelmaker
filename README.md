@@ -3,3 +3,10 @@
 A small static webapp for generating CSVs to turn into date and time labels.
 
 Built for the Liturgy team at Loyola Marymount University. But hey, I'm sure others will find it helpful too.
+
+## TO DO
+
+- Finish writing usage tutorial
+- CSS
+- Allow changing row size (Donal's request)
+- Fix the online template to accommodate for changes in cell size
