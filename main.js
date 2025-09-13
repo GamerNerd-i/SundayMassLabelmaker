@@ -35,15 +35,6 @@ function csvEscape(cell) {
     return '"' + String(cell).replace(/"/g, '""') + '"';
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const today = new Date(Date.now());
-    const nextYear = new Date(today);
-    nextYear.setFullYear(today.getFullYear() + 1);
-
-    document.getElementById("start").value = today.toISOString();
-    document.getAnimations("end").value = nextYear.toISOString();
-});
-
 document.getElementById("generate").addEventListener("click", () => {
     const startVal = document.getElementById("start").value;
     const endVal = document.getElementById("end").value;
@@ -56,15 +47,30 @@ document.getElementById("generate").addEventListener("click", () => {
     }
     const start = new Date(startVal + "T00:00:00");
     const end = new Date(endVal + "T23:59:59");
+
+    if (end.getFullYear() - start.getFullYear() > 5) {
+        alert(
+            "For your safety (and to be reasonable), please only input a time span of at most 5 years."
+        );
+        return;
+    }
+
     const times = document
         .getElementById("times")
         .value.split(/\r?\n/)
         .map((s) => s.trim())
         .filter(Boolean);
+
+    if (times.length > 50) {
+        alert(
+            "For your safety (and to be reasonable), date labels are capped at 50."
+        );
+    }
+
     const sundays = getSundays(start, end).map((d) => fmtMMDDYY(d));
 
     if (sundays.length === 0) {
-        alert("There are no Sundays within this length of dates.");
+        alert("There are no Sundays within this span of dates.");
         return;
     }
 
@@ -73,10 +79,17 @@ document.getElementById("generate").addEventListener("click", () => {
         times.forEach((t) => masses.push(d + "\n" + t));
     });
 
-    const rows = batched(masses, 4);
-    // pad last row to 4 columns
-    if (rows.length && rows[rows.length - 1].length < 4) {
-        while (rows[rows.length - 1].length < 4) rows[rows.length - 1].push("");
+    const columns = parseInt(document.getElementById("columns").value);
+    if (columns < 1 || columns > 20) {
+        alert("Number of columns must be between 1 and 20");
+        return;
+    }
+
+    const rows = batched(masses, columns);
+    // Pad the last row
+    if (rows.length && rows[rows.length - 1].length < columns) {
+        while (rows[rows.length - 1].length < columns)
+            rows[rows.length - 1].push("");
     }
 
     let csv = "";

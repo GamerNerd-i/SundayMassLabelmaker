@@ -6,7 +6,5 @@ Built for the Liturgy team at Loyola Marymount University. But hey, I'm sure oth
 
 ## TO DO
 
-- Finish writing usage tutorial
 - CSS
-- Allow changing row size (Donal's request)
 - Fix the online template to accommodate for changes in cell size

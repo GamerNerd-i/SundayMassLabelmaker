@@ -9,35 +9,51 @@
     </head>
     <body>
         <h1>Sunday Mass Labelmaker</h1>
+        <form>
+            <label
+                >Start date:
+                <input
+                    id="start"
+                    type="date"
+                    value=""
+                    required /></label
+            ><br />
+            <label
+                >End date:
+                <input
+                    id="end"
+                    type="date"
+                    value=""
+                    required /></label
+            ><br />
 
-        <label
-            >Start date:
-            <input
-                id="start"
-                type="date"
-                value=""
-                required /></label
-        ><br />
-        <label
-            >End date:
-            <input
-                id="end"
-                type="date"
-                value=""
-                required /></label
-        ><br />
-
-        <label
-            >Times (one per line):<br />
-            <textarea
-                id="times"
-                rows="3">
+            <label
+                >Date Labels (Times):<br />
+                <textarea
+                    id="times"
+                    rows="3">
 10 AM
 8 PM</textarea
-            ></label
-        ><br />
+                ></label
+            ><br />
 
-        <button id="generate">Create and Download CSV</button>
+            <label
+                >Number of Columns / Items per Row:
+                <input
+                    id="columns"
+                    type="number"
+                    value="4"
+                    min="1"
+                    max="20"
+                    step="1"
+                    required
+            /></label>
+
+            <br />
+
+            <button id="generate">Create and Download CSV</button>
+            <input type="reset" />
+        </form>
 
         <h2>
             Setting Up the
